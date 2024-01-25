@@ -1,0 +1,16 @@
+GET http://localhost:3000/benedikt/chat/6
+
+################################################################
+
+POST http://localhost:3000/benedikt/chat
+Content-Type: application/json
+
+{
+  "months": ["Jan", "Feb", "Mar", "Apr", "May"],
+  "m_count": [8, 7, 6, 5, 3],
+  "m_total": 29,
+  "m_img": 0,
+  "m_video": 0,
+  "m_audio": 0,
+  "m_data": 0
+}
