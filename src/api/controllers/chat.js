@@ -1,11 +1,32 @@
 import validator from 'is-my-json-valid';
-import { dbGetChat, dbPostChat } from '../models/chat.js';
+import {
+  dbGetChat,
+  dbPostChat,
+  dbPostPerson,
+  dbGetPeople,
+} from '../models/chat.js';
 
 const validate = validator({
   required: true,
   type: 'object',
   properties: {
-    id: {
+    m_total: {
+      required: true,
+      type: 'number',
+    },
+    m_img: {
+      required: true,
+      type: 'number',
+    },
+    m_video: {
+      required: true,
+      type: 'number',
+    },
+    m_audio: {
+      required: true,
+      type: 'number',
+    },
+    m_data: {
       required: true,
       type: 'number',
     },
@@ -19,9 +40,21 @@ const getChat = async (req, res) => {
   return res.status(200).json(chat);
 };
 
+const getPeople = async (req, res) => {
+  const { id } = req.params;
+  const People = await dbGetPeople(id);
+  if (!People) return res.status(404).send('Ressource not found');
+  return res.status(200).json(People);
+};
+
 const postChat = async (req, res) => {
   const chat = await dbPostChat(req.body);
   return res.status(201).json(chat);
 };
 
-export { getChat, postChat };
+const postPeople = async (req, res) => {
+  const person = await dbPostPerson(req.body);
+  return res.status(201).json(person);
+};
+
+export { getChat, postChat, postPeople, getPeople };
