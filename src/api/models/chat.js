@@ -5,6 +5,8 @@ const dbGetChat = async (id) => {
   return rows;
 };
 
+const dbDelChat = (id) => query('DELETE FROM chat WHERE chat_id=$1', [id]);
+
 const dbGetPeople = async (id) => {
   const { rows } = await query('SELECT * FROM people WHERE chat_id=$1', [id]);
   return rows;
@@ -41,4 +43,4 @@ const dbPostPerson = async ({ name, pm_count, chat_id }) => {
   } catch (error) {}
 };
 
-export { dbGetChat, dbPostChat, dbPostPerson, dbGetPeople };
+export { dbGetChat, dbPostChat, dbPostPerson, dbGetPeople, dbDelChat };

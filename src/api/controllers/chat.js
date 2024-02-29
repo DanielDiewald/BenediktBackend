@@ -4,6 +4,7 @@ import {
   dbPostChat,
   dbPostPerson,
   dbGetPeople,
+  dbDelChat,
 } from '../models/chat.js';
 
 const validate = validator({
@@ -40,6 +41,14 @@ const getChat = async (req, res) => {
   return res.status(200).json(chat);
 };
 
+const delChat = async (req, res) => {
+  const { id } = req.params;
+  const chat = await dbDelChat(id);
+  if (!chat) return res.status(404).send('Ressource not found');
+  await dbDelChat(id);
+  return res.status(200).end();
+};
+
 const getPeople = async (req, res) => {
   const { id } = req.params;
   const People = await dbGetPeople(id);
@@ -57,4 +66,4 @@ const postPeople = async (req, res) => {
   return res.status(201).json(person);
 };
 
-export { getChat, postChat, postPeople, getPeople };
+export { getChat, postChat, postPeople, getPeople, delChat };
