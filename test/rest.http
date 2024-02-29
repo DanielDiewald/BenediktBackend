@@ -14,3 +14,17 @@ Content-Type: application/json
   "m_audio": 0,
   "m_data": 0
 }
+
+################################################################
+POST http://localhost:3000/benedikt/person
+Content-Type: application/json
+
+{
+  "name": "Herbert",
+  "pm_count": [8,7,6,5,3],
+  "chat_id": 6
+}
+
+################################################################
+
+GET http://localhost:3000/benedikt/chat/people/6
