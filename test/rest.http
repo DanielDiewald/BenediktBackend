@@ -1,4 +1,4 @@
-GET http://localhost:3000/benedikt/chat/7
+GET http://localhost:3000/benedikt/chat/34
 
 ################################################################
 
@@ -26,9 +26,9 @@ Content-Type: application/json
 {
   "name": "Herbert",
   "pm_count": [8,7,6,5,3],
-  "chat_id": 6
+  "chat_id": 23
 }
 
 ################################################################
 
-GET http://localhost:3000/benedikt/chat/people/6
+GET http://localhost:3000/benedikt/chat/people/34

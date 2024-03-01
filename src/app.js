@@ -5,6 +5,7 @@ import cors from 'cors';
 import path from 'path';
 import testRoute from './api/routes/test.js';
 import chatRoute from './api/routes/chat.js';
+import { errorHandler, notFoundHandler } from '../middleware/errorHandler.js';
 
 dotenv.config();
 
@@ -20,6 +21,9 @@ app.use(express.static(path.join(dirname, '/public')));
 app.use(express.json());
 
 app.use('/benedikt', chatRoute);
+
+app.use(errorHandler);
+app.use(notFoundHandler);
 
 const PORT = process.env.PORT || 5000;
 
