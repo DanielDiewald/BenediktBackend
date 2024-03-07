@@ -5,6 +5,7 @@ import {
   dbPostPerson,
   dbGetPeople,
   dbDelChat,
+  dbIncrementChatViews,
 } from '../models/chat.js';
 
 const validate = validator({
@@ -41,6 +42,12 @@ const getChat = async (req, res) => {
   return res.status(200).json(chat);
 };
 
+const incrementChatViews = async (req, res) => {
+  const { id } = req.params;
+  await dbIncrementChatViews(id);
+  return res.status(200).send('Chat views incremented successfully');
+};
+
 const delChat = async (req, res) => {
   const { id } = req.params;
   const chat = await dbDelChat(id);
@@ -66,4 +73,11 @@ const postPeople = async (req, res) => {
   return res.status(201).json(person);
 };
 
-export { getChat, postChat, postPeople, getPeople, delChat };
+export {
+  getChat,
+  postChat,
+  postPeople,
+  getPeople,
+  delChat,
+  incrementChatViews,
+};

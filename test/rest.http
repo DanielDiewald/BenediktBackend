@@ -31,4 +31,8 @@ Content-Type: application/json
 
 ################################################################
 
-GET http://localhost:3000/benedikt/chat/people/34
+GET http://localhost:3000/benedikt/chat/people/49
+
+################################################################
+
+PATCH http://localhost:3000/benedikt/chat/50

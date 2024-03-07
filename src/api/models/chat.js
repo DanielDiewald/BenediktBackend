@@ -5,6 +5,10 @@ const dbGetChat = async (id) => {
   return rows;
 };
 
+const dbIncrementChatViews = async (id) => {
+  await query('UPDATE chat SET views = views + 1 WHERE chat_id = $1', [id]);
+};
+
 const dbDelChat = (id) => query('DELETE FROM chat WHERE chat_id=$1', [id]);
 
 const dbGetPeople = async (id) => {
@@ -43,4 +47,11 @@ const dbPostPerson = async ({ name, pm_count, chat_id }) => {
   } catch (error) {}
 };
 
-export { dbGetChat, dbPostChat, dbPostPerson, dbGetPeople, dbDelChat };
+export {
+  dbGetChat,
+  dbPostChat,
+  dbPostPerson,
+  dbGetPeople,
+  dbDelChat,
+  dbIncrementChatViews,
+};

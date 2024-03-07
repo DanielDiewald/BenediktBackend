@@ -7,6 +7,7 @@ import {
   postPeople,
   getPeople,
   delChat,
+  incrementChatViews,
 } from '../controllers/chat.js';
 
 const router = express.Router();
@@ -16,5 +17,6 @@ router.delete('/chat/:id', asyncHandler(delChat));
 router.post('/chat', asyncHandler(postChat));
 router.post('/person', asyncHandler(postPeople));
 router.get('/chat/people/:id', asyncHandler(getPeople));
+router.patch('/chat/:id', asyncHandler(incrementChatViews));
 
 export default router;
